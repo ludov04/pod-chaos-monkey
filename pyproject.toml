@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "pod-chaos-monkey"
+version = "0.1.0"
+description = ""
+authors = ["Ludovic Vannoorenberghe <ludovic.vannoorenberghe@elephant.healthcare>"]
+readme = "README.md"
+packages = [{include = "pod_chaos_monkey"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
