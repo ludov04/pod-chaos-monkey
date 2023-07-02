@@ -19,6 +19,7 @@ class TestPodChaosMonkey(unittest.TestCase):
     # Verify that the delete_namespaced_pod method is called
     mock_core_v1_api.return_value.delete_namespaced_pod.assert_called_with("mock-pod", namespace)
 
+  #TODO: Test if list is empty
 
 if __name__ == '__main__':
   unittest.main()
