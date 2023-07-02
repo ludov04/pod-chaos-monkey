@@ -1,6 +1,7 @@
 import random
 from kubernetes import client, config
 def delete_random_pod(namespace):
+  config.load_config()
   v1 = client.CoreV1Api()
 
   # Get the list of pods in the specified namespace
