@@ -5,8 +5,11 @@ metadata:
   name: pod-chaos-monkey
 spec:
   schedule: "* * * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
+      ttlSecondsAfterFinished: 120
       template:
         spec:
           serviceAccountName: pod-chaos-monkey
@@ -15,6 +18,6 @@ spec:
             image: pod-chaos-monkey
             args:
             - -n
-            - workloads
+            - kube-system
             - --dry-run
           restartPolicy: OnFailure

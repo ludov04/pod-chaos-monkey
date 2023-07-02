@@ -25,5 +25,5 @@ subjects:
     name: pod-chaos-monkey
 roleRef:
   kind: ClusterRole
-  name: pod-chaos-monkey-role
+  name: pod-chaos-monkey-cluster-role
   apiGroup: rbac.authorization.k8s.io
