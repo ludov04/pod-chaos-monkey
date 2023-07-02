@@ -1,0 +1,8 @@
+namespace: pod-chaos-monkey
+resources:
+  - cronjob.yaml
+  - rbac.yaml
+images:
+  - name: pod-chaos-monkey
+    newName: ghcr.io/ludov04/pod-chaos-monkey
+    newTag: latest
