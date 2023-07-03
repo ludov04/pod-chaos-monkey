@@ -1,6 +1,7 @@
-namespace: pod-chaos-monkey
+namespace: workloads
 resources:
   - cronjob.yaml
+  - dummy.yaml
   - rbac.yaml
 images:
   - name: pod-chaos-monkey

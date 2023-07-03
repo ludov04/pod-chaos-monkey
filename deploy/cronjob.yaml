@@ -19,5 +19,4 @@ spec:
             args:
             - -n
             - workloads
-            - --dry-run
           restartPolicy: OnFailure

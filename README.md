@@ -80,7 +80,6 @@ Write a kustomization.yaml file if you need to customise the image used or some 
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: pod-chaos-monkey
 resources:
  - https://github.com/ludov04/pod-chaos-monkey//deploy
 
@@ -114,10 +113,11 @@ patches:
       kind: CronJob
 ```
 
-Deploy with `kubectl apply -k .`
+Deploy with `kubectl apply -k .`. Make sure that the namespace in which you deploy exists `kubectl create namespace workloads`
 
-## Notes
+## Notes/Known Limitations
 
 - When deploying in a cluster, the python kubernetes sdk will automatically use the service account token mounted in the pod to authenticate to the kubernetes api. Make sure the service account have the correct permissions. See the role within `deploy/rbac.yaml` for an example.
 - Use `Role` instead of `ClusterRole` if you'd prefered pod-chaos-monkey to be able to delete pods only within a selected namespace.
 - The built image currently uses root as default user, consider using a different user.
+- If you run pod chaos monkey in the same namespace as the one you are selecting for deletion, it can happen that it select itself for deletion.
