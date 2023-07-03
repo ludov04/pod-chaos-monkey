@@ -41,6 +41,12 @@ python pod_chaos_monkey -l "app=frontend"
 python pod_chaos_monkey --dry-run
 ```
 
+## Run the tests
+Use the following command to run the tests
+```
+python -m unittest discover
+```
+
 ### Examples
 To delete a random pod in the my-namespace namespace, excluding pods with the app=frontend label, you can use the following command:
 ```
