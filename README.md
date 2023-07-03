@@ -33,18 +33,18 @@ python pod_chaos_monkey -n my-namespace
 
 - -l, --label-selector: Restricts the selection of candidate pods using a label selector. Only pods matching the specified label selector will be eligible for deletion. Example:
 ```
-python pod_chaos_monkey.py -l "app=frontend"
+python pod_chaos_monkey -l "app=frontend"
 ```
 
 - --dry-run: Performs a dry run without deleting the pod. This can be useful for testing and validation purposes. Example:
 ```
-python pod_chaos_monkey.py --dry-run
+python pod_chaos_monkey --dry-run
 ```
 
 ### Examples
 To delete a random pod in the my-namespace namespace, excluding pods with the app=frontend label, you can use the following command:
 ```
-python pod_chaos_monkey.py -n my-namespace -l "app!=frontend"
+python pod_chaos_monkey -n my-namespace -l "app!=frontend"
 ```
 ## Usage with docker
 
@@ -59,7 +59,7 @@ docker pull ghcr.io/ludov04/pod-chaos-monkey
 
 If you are running this locally, make sure to mount your kubeconfig within the container:
 ```
-docker run -v $HOME/.kube:/root/.kube -e ghcr.io/ludov04/pod-chaos-monkey -n workloads --dry-run
+docker run -v $HOME/.kube:/root/.kube ghcr.io/ludov04/pod-chaos-monkey -n workloads --dry-run
 ```
 
 ## Installation
@@ -108,7 +108,8 @@ patches:
       kind: CronJob
 ```
 
-Deploy with `kubectl apply -f kustomization.yaml`
+Deploy with `kubectl apply -k .`
+
 ## Notes
 
 - When deploying in a cluster, the python kubernetes sdk will automatically use the service account token mounted in the pod to authenticate to the kubernetes api. Make sure the service account have the correct permissions. See the role within `deploy/rbac.yaml` for an example.
